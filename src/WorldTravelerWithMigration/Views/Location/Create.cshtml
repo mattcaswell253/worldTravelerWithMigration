@@ -1,0 +1,26 @@
+﻿@model WorldTravelerWithMigration.Models.Location
+
+@{
+    ViewData["Title"] = "Location - Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Create a new item</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Country)
+    @Html.EditorFor(model => model.Country)
+
+    <select class="form-control" title=''>
+        @foreach (var experience in ((IEnumerable<SelectListItem>)ViewBag.ExperienceId))
+        {
+            <option>@experience.Text</option>
+        }
+
+    </select>
+
+    <input type="submit" value="Create" class="btn btn-default" />
+}
+
+@Html.ActionLink("Back to List", "Index")

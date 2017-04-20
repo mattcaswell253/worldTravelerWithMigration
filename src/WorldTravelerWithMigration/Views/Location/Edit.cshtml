@@ -1,0 +1,28 @@
+﻿@model WorldTravelerWithMigration.Models.Location
+
+@{
+    ViewData["Title"] = "Location - Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit</h2>
+
+<hr />
+<h4>Edit this item: @Html.DisplayFor(model => model.Country)</h4>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.LocationId)
+
+    @Html.LabelFor(model => model.Country)
+    @Html.EditorFor(model => model.Country)
+
+    <select class="form-control" title=''>
+        @foreach (var experience in ((IEnumerable<SelectListItem>)ViewBag.ExperienceId))
+        {
+            <option>@experience.Text</option>
+        }
+
+    </select>
+
+    <input type="submit" value="Save" class="btn btn-default" />
+}
+@Html.ActionLink("Back to List", "Index")
